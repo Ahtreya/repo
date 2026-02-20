@@ -9,9 +9,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # ADD THIS: Create minimal package.json
       - name: Setup demo package.json
-        run: echo '{"name":"demo","version":"1.0.0"}' > package.json
+        run: |
+          echo '{"name":"demo","version":"1.0.0","dependencies":{"lodash":"4.17.21"}}' > package.json
 
       - name: prime-cache-ba073d4
         id: cache-step
@@ -23,5 +23,5 @@ jobs:
       - name: Echo cache result
         run: echo "Cache outcome: ${{ steps.cache-step.outputs.cache-hit }}"
 
-      - name: Demo install
+      - name: Demo install (downloads lodash → populates ~/.npm)
         run: npm install
