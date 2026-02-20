@@ -23,5 +23,5 @@ jobs:
       - name: Echo cache result
         run: echo "Cache outcome: ${{ steps.cache-step.outputs.cache-hit }}"
 
-      - name: Demo install (downloads lodash → populates ~/.npm)
+      - name: Demo install
         run: npm install
