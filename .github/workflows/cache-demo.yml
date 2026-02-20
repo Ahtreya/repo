@@ -1,28 +1,25 @@
 name: Cache Demo
-
 on: [push]
-
 jobs:
   demo:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+      
       - name: Setup demo package.json
         run: |
           echo '{"name":"demo","version":"1.0.0","dependencies":{"lodash":"4.17.21"}}' > package.json
-
+      
       - name: prime-cache-ba073d4
         id: cache-step
         uses: actions/cache@v4
         with:
           key: cache-ba073d4
           path: ~/.npm
-
+      
       - name: Echo cache result
-        run: echo "Cache outcome: ${{ steps.cache-step.outputs.cache-hit }}"
-
-       - name: Demo install
+        run: "echo 'Cache outcome: ${{ steps.cache-step.outputs.cache-hit }}'"
+      
+      - name: Demo install
         run: npm install
-  
