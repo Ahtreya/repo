@@ -23,6 +23,6 @@ jobs:
       - name: Echo cache result
         run: echo "Cache outcome: ${{ steps.cache-step.outputs.cache-hit }}"
 
-      - name: Demo install
+       - name: Demo install
         run: npm install
   
